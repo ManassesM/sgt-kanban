@@ -10,7 +10,10 @@ type Props = {
 const Modal: React.FC<Props> = ({ open, onClose, children }) => {
   return (
     <S.Modal open={open} onClose={onClose}>
-      {children}
+      <S.Wrap>
+        <S.Close onClick={() => onClose(false)} />
+        {children}
+      </S.Wrap>
     </S.Modal>
   )
 }

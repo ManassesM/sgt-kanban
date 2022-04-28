@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import * as S from './styles'
 
 const Bar: React.FC = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(true)
 
   return (
     <>
@@ -14,7 +14,7 @@ const Bar: React.FC = () => {
       </S.Container>
 
       <Modal open={open} onClose={() => setOpen(false)}>
-        <TasksForm />
+        <TasksForm onClose={setOpen} />
       </Modal>
     </>
   )
