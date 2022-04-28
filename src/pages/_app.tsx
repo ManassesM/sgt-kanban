@@ -1,25 +1,26 @@
 /* istanbul ignore file */
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-
+import { ThemeProvider } from 'styled-components'
 import GlobalStyles from 'styles/global'
+import theme from 'styles/theme'
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <Head>
-        <title>NextJS Boilerplate</title>
+        <title>Kanban Board</title>
         <link rel="shortcut icon" href="/img/favicon.ico" />
         <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta
-          name="description"
-          content="A simple project starter to work with TypeScript, React, NextJS and Styled Components"
+          name="Kanban"
+          content="A project for my personal portfolio. It consists of a kanban board."
         />
       </Head>
       <GlobalStyles />
       <Component {...pageProps} />
-    </>
+    </ThemeProvider>
   )
 }
 
