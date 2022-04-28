@@ -47,6 +47,6 @@ export const Barra = styled.div`
   justify-content: space-between;
 
   height: 75px;
-  padding: 10px 50px;
+  padding: 10px 25px;
   background: ${({ theme }) => theme.colors.primary.blue[700]};
 `
