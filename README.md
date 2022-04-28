@@ -1,6 +1,6 @@
 # Kanban Board
 
-This is a kanban board made with NextJS, styled using Styled Components, Authentication with NextAuth and much more.
+This is a kanban board using NextJS, styled using Styled Components, Authentication with NextAuth and much more.
 
 ## Getting Started
 
