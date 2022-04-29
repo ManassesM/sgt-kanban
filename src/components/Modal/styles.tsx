@@ -8,7 +8,7 @@ export const Close = styled(CloseIcon)`
   top: 10px;
 
   color: ${({ theme }) => theme.colors.primary.blue[700]};
-  font-size: 25px;
+  font-size: 30px;
 
   cursor: pointer;
   transition: all 0.2s ease-in;

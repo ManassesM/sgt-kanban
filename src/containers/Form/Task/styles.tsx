@@ -10,19 +10,25 @@ export const Title = styled.label`
   justify-content: center;
 
   color: ${({ theme }) => theme.colors.primary.blue[700]};
-  font-size: 15px;
+  font-size: 25px;
   font-weight: 600;
+`
+
+export const BtnWrapper = styled.section`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 `
 
 export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 30px;
 
   margin: 15px 0px;
 `
 
-export const Container = styled.div`
+export const Container = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -30,7 +36,7 @@ export const Container = styled.div`
 
   background: ${({ theme }) => theme.colors.primary.blue[50]};
   border-radius: ${({ theme }) => theme.borderRadius};
-  width: 300px;
+  width: auto;
   height: auto;
-  padding: 20px 0;
+  padding: 15px 30px;
 `

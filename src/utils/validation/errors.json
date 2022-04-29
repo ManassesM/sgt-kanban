@@ -1,0 +1,12 @@
+{
+  "title": {
+    "required": "Title is a mandatory field"
+  },
+  "priority": {
+    "required": "Priority is a mandatory field",
+    "matches": "Priority must be a number between 1 and 4"
+  },
+  "date": {
+    "required": "Insert a valid date"
+  }
+}

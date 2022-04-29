@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import * as S from './styles'
 
 const Bar: React.FC = () => {
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   return (
     <>
