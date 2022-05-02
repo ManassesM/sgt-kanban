@@ -52,7 +52,7 @@ const TasksForm: React.FC<IProps> = ({ onClose, task }) => {
                 InputLabelProps={{ style: { fontSize: 20 } }}
               />
               {errors?.title?.type && (
-                <InputError type={errors.title.type} field="title" />
+                <InputError field="title" type={errors.title.type} />
               )}
             </>
           )}
@@ -73,12 +73,6 @@ const TasksForm: React.FC<IProps> = ({ onClose, task }) => {
                 InputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
               />
-              {errors?.description?.type && (
-                <InputError
-                  type={errors.description.type}
-                  field="description"
-                />
-              )}
             </>
           )}
         />
@@ -100,7 +94,7 @@ const TasksForm: React.FC<IProps> = ({ onClose, task }) => {
                 InputLabelProps={{ style: { fontSize: 20 } }}
               />
               {errors?.priority?.type && (
-                <InputError type={errors.priority.type} field="priority" />
+                <InputError field="priority" type={errors.priority.type} />
               )}
             </>
           )}
@@ -121,7 +115,7 @@ const TasksForm: React.FC<IProps> = ({ onClose, task }) => {
                 InputLabelProps={{ style: { fontSize: 20 } }}
               />
               {errors?.date?.type && (
-                <InputError type={errors.date.type} field="date" />
+                <InputError field="date" type={errors.date.type} />
               )}
             </>
           )}

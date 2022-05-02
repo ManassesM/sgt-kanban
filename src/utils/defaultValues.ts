@@ -9,7 +9,7 @@ export function getDefaultValues(task?: ITask) {
   return {
     title: task?.title || '',
     description: task?.description || '',
-    priority: task?.priority || '',
+    priority: task?.priority || '0',
     date: task?.date || '',
   }
 }
