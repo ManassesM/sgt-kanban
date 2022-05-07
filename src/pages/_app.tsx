@@ -1,4 +1,5 @@
 /* istanbul ignore file */
+import { NotificationProvider } from 'contexts/NotificationContext'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
@@ -18,8 +19,10 @@ function App({ Component, pageProps }: AppProps) {
           content="A project for my personal portfolio. It consists of a kanban board."
         />
       </Head>
-      <GlobalStyles />
-      <Component {...pageProps} />
+      <NotificationProvider>
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </NotificationProvider>
     </ThemeProvider>
   )
 }

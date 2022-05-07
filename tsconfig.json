@@ -24,7 +24,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/layout/Board.ts"  ],
+, "src/layout/Board.ts", "src/utils/validation/errors.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,5 +1,6 @@
 import { Popover } from '@mui/material'
 import ProfileCard from 'components/ProfileCard'
+import Toast from 'components/Toast'
 import React, { useState } from 'react'
 import * as S from './styles'
 
@@ -35,6 +36,7 @@ const Header = (Component: React.ComponentType<any>) => {
   const MyComponent = (props: any) => (
     <>
       <HOCHeader />
+      <Toast />
       <Component {...props} />
     </>
   )

@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { TextField } from '@mui/material'
 import Button from 'components/Button'
-import InputError from 'components/InputError'
+import { useNotification } from 'contexts/NotificationContext'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { getDefaultValues, ITask } from 'utils/defaultValues'
@@ -10,31 +10,42 @@ import * as S from './styles'
 
 interface IProps {
   task?: ITask
-  onClose: (_: boolean) => void
+  onCloseModal: () => void
 }
 
-const TasksForm: React.FC<IProps> = ({ onClose, task }) => {
+const TasksForm: React.FC<IProps> = ({ onCloseModal, task }) => {
   const defaultValues = getDefaultValues(task)
+  const { setToggleToast } = useNotification()
 
-  const {
-    control,
-    register,
-    handleSubmit,
-    getValues,
-    formState: { errors },
-  } = useForm({
+  const { control, register, handleSubmit, getValues } = useForm({
     resolver: yupResolver(validationSchema),
     defaultValues,
   })
 
   function handleSubmitTask(formData: ITask) {
     console.log(formData)
+
+    onCloseModal()
+    setToggleToast({
+      status: 'success',
+      title: 'Success!',
+      description: 'You have just created a new task.',
+    })
+  }
+
+  function onInvalid() {
+    setToggleToast({
+      status: 'error',
+      title: 'Error!',
+      description: "Either you missed a mandatory field or it's invalid.",
+    })
   }
 
   return (
-    <S.Container onSubmit={handleSubmit(handleSubmitTask)}>
+    <S.Container onSubmit={handleSubmit(handleSubmitTask, onInvalid)}>
       <S.Wrapper>
         <S.Title>Create a Task</S.Title>
+
         <Controller
           name="title"
           control={control}
@@ -51,9 +62,6 @@ const TasksForm: React.FC<IProps> = ({ onClose, task }) => {
                 InputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
               />
-              {errors?.title?.type && (
-                <InputError field="title" type={errors.title.type} />
-              )}
             </>
           )}
         />
@@ -89,13 +97,9 @@ const TasksForm: React.FC<IProps> = ({ onClose, task }) => {
                 value={value}
                 label="priority"
                 variant="outlined"
-                inputProps={{ inputMode: 'numeric', pattern: '[1-4]*' }}
                 InputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
               />
-              {errors?.priority?.type && (
-                <InputError field="priority" type={errors.priority.type} />
-              )}
             </>
           )}
         />
@@ -114,20 +118,13 @@ const TasksForm: React.FC<IProps> = ({ onClose, task }) => {
                 InputProps={{ style: { fontSize: 20 } }}
                 InputLabelProps={{ style: { fontSize: 20 } }}
               />
-              {errors?.date?.type && (
-                <InputError field="date" type={errors.date.type} />
-              )}
             </>
           )}
         />
 
         <S.BtnWrapper>
           <Button type="submit" text="CREATE" />
-          <Button
-            type="button"
-            onClick={() => onClose(false)}
-            text="CANCELAR"
-          />
+          <Button type="button" onClick={onCloseModal} text="CANCELAR" />
         </S.BtnWrapper>
       </S.Wrapper>
     </S.Container>

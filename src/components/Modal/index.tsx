@@ -3,15 +3,15 @@ import * as S from './styles'
 
 type Props = {
   open: boolean
-  onClose: (_: boolean) => void
+  onCloseModal: () => void
   children: ReactElement
 }
 
-const Modal: React.FC<Props> = ({ open, onClose, children }) => {
+const Modal: React.FC<Props> = ({ open, onCloseModal, children }) => {
   return (
-    <S.Modal open={open} onClose={onClose}>
+    <S.Modal open={open} onClose={onCloseModal}>
       <S.Wrap>
-        <S.Close onClick={() => onClose(false)} />
+        <S.Close onClick={onCloseModal} />
         {children}
       </S.Wrap>
     </S.Modal>

@@ -7,6 +7,9 @@ const Bar: React.FC = () => {
   const [open, setOpen] = useState(false)
   const [isOpenSearch, setIsOpenSearch] = useState(false)
 
+  const hadnleClose = () => {
+    setOpen(false)
+  }
   return (
     <>
       <S.Container>
@@ -17,8 +20,8 @@ const Bar: React.FC = () => {
         </S.Search>
       </S.Container>
 
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <TasksForm onClose={setOpen} />
+      <Modal open={open} onCloseModal={hadnleClose}>
+        <TasksForm onCloseModal={hadnleClose} />
       </Modal>
     </>
   )
