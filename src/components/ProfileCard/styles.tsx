@@ -1,12 +1,15 @@
+import { ListItem as MUIListItem } from '@mui/material/'
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
+
 import styled from 'styled-components'
 
 export const Hr = styled.hr`
-  border: 1px dotted ${({ theme }) => theme.colors.primary.blue[50]};
+  border: 1px solid ${({ theme }) => theme.colors.primary.blue[100]};
   border-radius: ${({ theme }) => theme.borderRadius};
 
   width: 80%;
 
-  margin: 5px 0;
+  margin: 5px auto;
 `
 
 export const Info = styled.div`
@@ -63,15 +66,67 @@ export const ProfileInfo = styled.section`
   }
 `
 
+export const ListItemIcon = styled(FiberManualRecordIcon)`
+  /* border: 1px solid purple; */
+`
+
+export const LogOutListArea = styled(MUIListItem)`
+  gap: 5px;
+
+  width: 100px;
+  margin: 10px 0 5px 10px;
+  padding: 0 13px;
+
+  svg,
+  p,
+  span {
+    color: ${({ theme }) => theme.colors.primary.blue[50]};
+    font-size: 14px;
+  }
+
+  background: ${({ theme }) => theme.colors.primary.red[300]};
+  border-radius: ${({ theme }) => theme.borderRadius};
+
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary.red[400]};
+  }
+`
+
+export const ListItem = styled(MUIListItem)`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  p,
+  span {
+    color: ${({ theme }) => theme.colors.primary.blue[50]};
+    font-size: 14px;
+  }
+
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.primary.blue[800]};
+    border-radius: ${({ theme }) => theme.borderRadius};
+  }
+
+  svg {
+    &:hover {
+      background: ${({ theme }) => theme.colors.primary.red[400]};
+    }
+  }
+`
+
 export const Card = styled.div`
   background: ${({ theme }) => theme.colors.primary.blue[700]};
 
-  width: 150px;
-  height: 215px;
+  width: 165px;
+  height: auto;
 
   border: 1px solid ${({ theme }) => theme.colors.primary.blue[50]};
   border-radius: ${({ theme }) => theme.borderRadius};
 
   padding: 6px 10px;
-  color: ${({ theme }) => theme.colors.primary.blue[50]};
 `

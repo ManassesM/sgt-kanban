@@ -45,7 +45,7 @@ const TasksForm: React.FC<IProps> = ({ onCloseModal, task }) => {
   return (
     <S.Container onSubmit={handleSubmit(handleSubmitTask, onInvalid)}>
       <S.Wrapper>
-        <S.Title>Create a Task</S.Title>
+        <S.Title>Create Task</S.Title>
 
         <Controller
           name="title"
