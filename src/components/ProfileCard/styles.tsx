@@ -1,5 +1,4 @@
-import { ListItem as MUIListItem } from '@mui/material/'
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
+import ListItem from '@mui/material/ListItem'
 
 import styled from 'styled-components'
 
@@ -66,21 +65,19 @@ export const ProfileInfo = styled.section`
   }
 `
 
-export const ListItemIcon = styled(FiberManualRecordIcon)`
-  /* border: 1px solid purple; */
-`
-
-export const LogOutListArea = styled(MUIListItem)`
+export const LogOutListArea = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
 
   width: 100px;
-  margin: 10px 0 5px 10px;
   padding: 0 13px;
 
+  color: ${({ theme }) => theme.colors.primary.blue[50]};
+
   svg,
-  p,
   span {
-    color: ${({ theme }) => theme.colors.primary.blue[50]};
     font-size: 14px;
   }
 
@@ -94,7 +91,7 @@ export const LogOutListArea = styled(MUIListItem)`
   }
 `
 
-export const ListItem = styled(MUIListItem)`
+export const MUIListItem = styled(ListItem)`
   display: flex;
   align-items: center;
   gap: 5px;

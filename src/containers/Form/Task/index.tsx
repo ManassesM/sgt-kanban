@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { TextField } from '@mui/material'
 import Button from 'components/Button'
-import { useNotification } from 'contexts/NotificationContext'
+import { useSnackbar } from 'notistack'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { getDefaultValues } from 'utils/defaultValues'
@@ -16,7 +16,8 @@ interface IProps {
 
 const TasksForm: React.FC<IProps> = ({ onCloseModal, task }) => {
   const defaultValues = getDefaultValues(task)
-  const { setToggleToast } = useNotification()
+
+  const { enqueueSnackbar } = useSnackbar()
 
   const { control, register, handleSubmit, getValues } = useForm({
     resolver: yupResolver(validationSchema),
@@ -27,18 +28,14 @@ const TasksForm: React.FC<IProps> = ({ onCloseModal, task }) => {
     console.log(formData)
 
     onCloseModal()
-    setToggleToast({
-      status: 'success',
-      title: 'Success!',
-      description: 'You have just created a new task.',
+    enqueueSnackbar('You have just created a new task!', {
+      variant: 'success',
     })
   }
 
   function onInvalid() {
-    setToggleToast({
-      status: 'error',
-      title: 'Error!',
-      description: "Either you missed a mandatory field or it's invalid.",
+    enqueueSnackbar("Either you missed a mandatory field or it's invalid!", {
+      variant: 'error',
     })
   }
 

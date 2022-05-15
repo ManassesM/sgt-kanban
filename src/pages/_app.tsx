@@ -1,10 +1,10 @@
 /* istanbul ignore file */
-import { NotificationProvider } from 'contexts/NotificationContext'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
+import { SnackbarProvider } from 'notistack'
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -19,10 +19,15 @@ function App({ Component, pageProps }: AppProps) {
           content="A project for my personal portfolio. It consists of a kanban board."
         />
       </Head>
-      <NotificationProvider>
+      <SnackbarProvider
+        autoHideDuration={3000}
+        disableWindowBlurListener={true}
+        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+        maxSnack={3}
+      >
         <GlobalStyles />
         <Component {...pageProps} />
-      </NotificationProvider>
+      </SnackbarProvider>
     </ThemeProvider>
   )
 }
