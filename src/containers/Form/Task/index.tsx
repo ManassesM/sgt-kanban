@@ -2,11 +2,16 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { TextField } from '@mui/material'
 import Button from 'components/Button'
 import { useSnackbar } from 'notistack'
-import React from 'react'
+import React, { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { getDefaultValues } from 'utils/defaultValues'
 import { ITask } from 'utils/types'
 import { validationSchema } from 'utils/validation/validation'
+
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+
 import * as S from './styles'
 
 interface IProps {
@@ -16,6 +21,7 @@ interface IProps {
 
 const TasksForm: React.FC<IProps> = ({ onCloseModal, task }) => {
   const defaultValues = getDefaultValues(task)
+  const [value, setValue] = useState<Date | null>(null)
 
   const { enqueueSnackbar } = useSnackbar()
 
@@ -105,17 +111,17 @@ const TasksForm: React.FC<IProps> = ({ onCloseModal, task }) => {
         <Controller
           name="date"
           control={control}
-          defaultValue={getValues('title')}
+          defaultValue={getValues('date')}
           render={({ field: { onChange, value } }) => (
             <>
-              <TextField
-                {...register('date')}
-                onChange={onChange}
-                value={value}
-                type="date"
-                InputProps={{ style: { fontSize: 20 } }}
-                InputLabelProps={{ style: { fontSize: 20 } }}
-              />
+              <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <DatePicker
+                  value={value}
+                  InputProps={{ style: { fontSize: 20 } }}
+                  onChange={onChange}
+                  renderInput={(params) => <TextField {...params} />}
+                />
+              </LocalizationProvider>
             </>
           )}
         />
