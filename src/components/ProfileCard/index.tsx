@@ -1,12 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import LogoutIcon from '@mui/icons-material/Logout'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
+import { UserType } from 'pages/api/user'
+import Router from 'next/router'
 
 import * as S from './styles'
 
-const ProfileCard: React.FC = () => {
+const list = [
+  { key: '1', primary: 'texto 1', secondary: 'ManassesM' },
+  { key: '2', primary: 'texto 11', secondary: 'text 22' },
+]
+
+interface ProfileCardProps {
+  user?: UserType
+}
+
+const ProfileCard: React.FC<ProfileCardProps> = ({ user }) => {
+  const handleClickLogout = () => Router.push('/api/auth/logout')
+
   return (
     <S.Card>
       <S.MUIListItem>
@@ -30,7 +43,7 @@ const ProfileCard: React.FC = () => {
       </S.MUIListItem>
       <S.Hr />
       <ListItem>
-        <S.LogOutListArea>
+        <S.LogOutListArea onClick={handleClickLogout}>
           <LogoutIcon />
           <ListItemText primary="Log out" />
         </S.LogOutListArea>

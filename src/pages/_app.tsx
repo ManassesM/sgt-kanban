@@ -5,8 +5,15 @@ import { ThemeProvider } from 'styled-components'
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 import { SnackbarProvider } from 'notistack'
+import { UserType } from './api/user'
+import { Header } from 'containers'
+import { UserProvider } from '@auth0/nextjs-auth0'
 
-function App({ Component, pageProps }: AppProps) {
+interface MyAppProps extends AppProps {
+  user?: UserType
+}
+
+function App({ Component, pageProps, user }: MyAppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -19,17 +26,28 @@ function App({ Component, pageProps }: AppProps) {
           content="A project for my personal portfolio. It consists of a kanban board."
         />
       </Head>
-      <SnackbarProvider
-        autoHideDuration={3000}
-        disableWindowBlurListener={true}
-        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-        maxSnack={3}
-      >
-        <GlobalStyles />
-        <Component {...pageProps} />
-      </SnackbarProvider>
+      <UserProvider>
+        <SnackbarProvider
+          autoHideDuration={3000}
+          disableWindowBlurListener={true}
+          anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
+          maxSnack={3}
+        >
+          <GlobalStyles />
+          <Header user={user} />
+          <Component {...pageProps} />
+        </SnackbarProvider>
+      </UserProvider>
     </ThemeProvider>
   )
 }
 
 export default App
+
+App.getInitialProps = async () => {
+  const data = await fetch('http://localhost:3000/api/user')
+
+  const user = await data.json()
+
+  return { user }
+}

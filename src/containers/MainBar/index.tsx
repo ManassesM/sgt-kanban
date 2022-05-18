@@ -15,6 +15,7 @@ const Bar: React.FC = () => {
   const hadnleClose = () => {
     setOpen(false)
   }
+
   return (
     <>
       <Container>

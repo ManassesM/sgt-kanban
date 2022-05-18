@@ -7,4 +7,9 @@ module.exports = withPWA({
     dest: 'public',
     disable: !isProd,
   },
+  env: {
+    DATABASE_URL: process.env.DATABASE_URL,
+    DOMAIN: process.env.DOMAIN,
+    CLIENT_ID: process.env.CLIENT_ID,
+  },
 })
