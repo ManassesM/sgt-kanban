@@ -5,6 +5,7 @@
     "node": true,
     "jest": true
   },
+  "prettier/prettier": ["error", { "endOfLine": "auto" }],
   "settings": {
     "react": {
       "version": "detect"
