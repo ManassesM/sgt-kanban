@@ -45,7 +45,7 @@ function App({ Component, pageProps, user }: MyAppProps) {
 export default App
 
 App.getInitialProps = async () => {
-  const data = await fetch('http://localhost:3000/api/user')
+  const data = await fetch(`${process.env.BASE_URL}/api/user`)
 
   const user = await data.json()
 
