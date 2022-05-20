@@ -8,6 +8,7 @@ import { SnackbarProvider } from 'notistack'
 import { UserType } from './api/user'
 import { Header } from 'containers'
 import { UserProvider } from '@auth0/nextjs-auth0'
+import { baseURL } from 'config/environmen'
 
 interface MyAppProps extends AppProps {
   user?: UserType
@@ -45,7 +46,7 @@ function App({ Component, pageProps, user }: MyAppProps) {
 export default App
 
 App.getInitialProps = async () => {
-  const data = await fetch(`${process.env.BASE_URL}/api/user`)
+  const data = await fetch(`${baseURL}/api/user`)
 
   const user = await data.json()
 
